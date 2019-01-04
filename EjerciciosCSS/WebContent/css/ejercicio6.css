@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+body {
+	width: 60em;
+	margin: 0 auto;
+}
+
+h1{
+	text-align: center;
+}
+
+#pequeno {
+	width: 16em;
+	float: left;
+  	padding: 0;
+  	margin: 0;
+}
+
+#grande {
+	width: 44em;
+	float: left;
+  	padding: 0;
+  	margin: 0;
+}
+
+#libro {
+	list-style-type: none;
+	padding: 0;
+}
+
+#libro li {
+	float: left;
+	width: 33%;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio 3</title>
+</head>
+<body>
+<h2>Los números primos son:</h2>
+<script>
+var i,j,primo;
+document.write('1<br>');
+document.write('2<br>');
+document.write('3<br>');
+for(i=4;i<=100;i++)
+{
+    primo=0;
+    for(j=2;j<i;j++)
+    {
+    	if(i%j==0) primo=1;
+    }
+    if (primo==0) {document.write(i); document.write('<br>');}
+}
+</script>
+</body>
+</html>
