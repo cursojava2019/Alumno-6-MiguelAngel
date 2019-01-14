@@ -1,1 +1,87 @@
 @charset "ISO-8859-1";
+
+.rectangulo {
+     width: 250px; 
+     height: 200px;      
+}
+
+#bloque1 {
+	background-color: red;
+}
+
+#bloque2 {
+	background-color: red;
+}
+
+#bloque3 {
+	background-color: red;
+}
+
+#cabecera {
+   background-color: green;
+   text-align: left;
+}
+
+@media (max-width: 575.98px) {
+ 
+	#cabecera {
+	   	background-color: orange;
+	   	text-align: center !important;
+	}
+	    
+	#uno {
+		text-align: left;
+	}
+	
+	#tres {
+		text-align: right;
+	}
+		 
+ 	#bloque2 {
+		background-color: blue;
+	}
+		 
+	#pie1 {
+	   text-align: center;
+	}
+
+	#pie2 {
+	   text-align: center;
+	}
+	
+}
+
+@media (min-width: 576px) and (max-width: 767.98px){
+	
+	#cabecera {
+      	background-color: blue;
+    }
+	
+	#uno {
+		text-align: left;
+	}
+	
+	#dos {
+		text-align: right;
+	}
+	
+	#bloque3 {
+		background-color:green;
+	}
+	
+	#pie1 {
+	   	text-align: center;
+	}
+
+	#pie2 {
+	   	text-align: center;
+	}
+
+
+}
+
+@media (min-width: 768px)
+{
+	
+
+}
