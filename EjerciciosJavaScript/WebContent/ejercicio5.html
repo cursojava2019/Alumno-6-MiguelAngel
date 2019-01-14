@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio 5</title>
+<script>
+  function Limpiar() {
+  	document.conversor.uno.value=0
+  	document.conversor.dos.value=0
+  }
+
+  function LimpiarDos() {
+  	document.conversor.tres.value=0
+  	document.conversor.cuatro.value=0
+  	
+  }
+  function convertirAEuros()
+  {
+  	document.conversor.dos.value=document.conversor.uno.value/166
+  }
+  function convertirAPesetas()
+  {
+  	document.conversor.cuatro.value=document.conversor.tres.value*166
+  }
+</script>
+</head>
+<body>
+
+<form name="conversor">
+  De Pesetas a Euros
+  <input type="text" name="uno">
+  <input type="button" value="Convertir" onClick="convertirAEuros()">
+  <input type="text" name="dos">
+  <input type="button" value="Limpiar" onClick="Limpiar()">
+  <br>
+  De Euros a Pesetas
+  <input type="text" name="tres">
+  <input type="button" value="Convertir" onClick="convertirAPesetas()">
+  <input type="text" name="cuatro">
+  <input type="button" value="Limpiar" onClick="LimpiarDos()">
+  <br>
+
+</form>
+
+</body>
+</html>
