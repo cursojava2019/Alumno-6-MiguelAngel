@@ -7,20 +7,19 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script type="text/javascript" src="js/bootstrap.min.css"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<style type="text/css"> div {border: 1px solid white;}</style>
 </head>
 <body>
 <div class="container text-center">
+	<div id="cabecera" class="row"><div class="col-12">Header</div></div>
 	<div class="row">
-		<div class="col-md-12"> header</div>
+		<div id="bloque1" class="rectangulo col-lg-4 col-md-4 col-sm-6 col-12 " style="padding: 20px" ><p id="uno" style="font-size:40px">1</p></div>
+		<div id="bloque2" class="rectangulo col-lg-4 col-md-4 col-sm-6 col-12 " style="padding: 20px" ><p id="dos" style="font-size:40px">2</p></div>
+		<div id ="bloque3" class="rectangulo col-lg-4 col-md-4 col-sm-12 col-12 " style="padding: 20px" ><p id="tres" style="font-size:40px">3</p></div>
 	</div>
 	<div class="row">
-		<div class="col-md-4"> 1 </div>
-		<div class="col-md-4"> 2 </div>
-		<div class="col-md-4"> 3 </div>
-	</div>
-	<div class="row">
-		<div class="col-md-6"> footer</div>
-		<div class="col-md-6"> footer</div>
+		<div class="col-md-6 text-right" style="background-color: yellow;"><p id="pie1">Footer 1</p></div>
+		<div class="col-md-6 text-left" style="background-color: yellow;"><p id="pie2">Footer 2</p></div>	
 	</div>
 </div>
 </body>

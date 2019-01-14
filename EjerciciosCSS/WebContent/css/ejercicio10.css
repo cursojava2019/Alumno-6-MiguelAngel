@@ -35,12 +35,82 @@ h1{
 
 @media only screen and (max-width: 1200px) and (min-width: 600px)
 {
+	body {
+	  width: 80%;
+	  margin: 0 auto;
+	}
+	
+	h1 {
+	  text-align: center;
+	}
+	
+	#pequeno, #grande {
+	  float: left;
+	  padding: 0;
+	  margin: 0;
+	}
+	
+	#pequeno {
+	 width: 25%;
+	}
+	
+	#grande {
+	  width: 75%;
+	}
+	
+	#libro {
+	  list-style-type: none;
+	  padding: 0;
+	}
+	
+	#libro li {
+	  float: left;
+	  width: 33%;
+	}
 }
 
 @media only screen and (max-width: 600px)
 {
+	#pequeno ul {
+    	padding-left: 0;
+  	}
+
+  	#pequeno li {
+	    display: inline;
+	}
+  
+	#pequeno li:after {
+	    content: "; ";
+	}
 }
 
 @media only screen and (min-width: 1200px)
 {
+	body {
+	  width: 80%;
+	  margin: 0 auto;
+	}
+	
+	h1 {
+	  text-align: center;
+	}
+	
+	#pequeno, #grande, #contenido {
+	  float: left;
+	  padding: 0;
+	  margin: 0;
+	}
+	
+	#pequeno {
+	 width: 33%;
+	}
+	
+	#grande {
+	  width: 33%;
+	}
+	
+	#contenido {
+	  width: 33%;
+	 
+	}
 }

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio 14</title>
+<script>
+    function cambiar() {
+        document.getElementById("imagen").src = "noche.jpg";
+    }
+
+    function volver() {
+        document.getElementById("imagen").src = "dia.jpg";
+    }	 
+</script>
+</head>
+<body>
+   <img src="dia.jpg" id="imagen"  onMouseOver="cambiar()" onMouseOut="volver()">
+</body>
+</html>

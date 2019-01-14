@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio 12</title>
+<script>
+	function evaluar(){
+		var r1 = document.getElementsByName('andalucia');
+		var r2 = document.getElementsByName('valenciana');		
+		var correcta = 0;
+		for(var i=0; i<r1.length; i++){
+			if(r1[i].checked){
+				if(r1[i].value == "sevilla"){
+					correcta++;	
+				}
+			}
+		}	
+		for(var i=0; i<r2.length; i++){
+			if(r2[i].checked){
+				if(r2[i].value == "valencia"){
+					correcta++;	
+				}
+			}
+		}
+		alert("Has acertado "+correcta+" de 2");
+	}	
+</script>
+</head>
+<body>
+	<form>
+		<label>Capital de Andalucia:</label>
+		<input type="radio" name="andalucia" value="jaen">Jaen
+		<input type="radio" name="andalucia" value="malaga">Malaga
+		<input type="radio" name="andalucia" value="sevilla">Sevilla
+		<br>
+		<label>Capital de Comunidad Valenciana:</label>
+		<input type="radio" name="valenciana" value="valencia">Valencia
+		<input type="radio" name="valenciana" value="castellon">Castellon
+		<input type="radio" name="valenciana" value="alicante">Alicante
+		<br><br>
+		<input type="submit" value="Finalizar" onclick="evaluar()">
+	</form>
+</body>
+</html>

@@ -3,13 +3,31 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Ejercicio 4</title>
+<script>
+
+function changecolor(code) {
+                document.bgColor=code }
+
+</script>
 </head>
 <body>
-<a href="#" onMouseOver="this.style.color='#ff0000'" onMouseOut="this.style.color='#ffffff'"><IMG height=20 hspace=10 src="Using_onMouseOver_archivos/red.gif" width=20 vspace=10></a>
-<a href="#" onMouseOver="this.style.color='#ffff00'" onMouseOut="this.style.color='#ffffff'"><IMG height=20 hspace=10 src="Using_onMouseOver_archivos/yellow.gif" width=20 vspace=10></a>
-<a href="#" onMouseOver="this.style.color='#009900'" onMouseOut="this.style.color='#ffffff'"><IMG height=20 hspace=10 src="Using_onMouseOver_archivos/green.gif" width=20 vspace=10></a>
-<a href="#" onMouseOver="this.style.color='#0000ff'" onMouseOut="this.style.color='#ffffff'"><IMG height=20 hspace=10 src="Using_onMouseOver_archivos/blue.gif" width=20 vspace=10></a>
-<a href="#" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#ffffff'"><IMG height=20 hspace=10 src="Using_onMouseOver_archivos/black.gif" width=20 vspace=10></a>
-
+<div class="container text-center">
+	<div class="row">
+		
+		<a onmouseover="changecolor('000000')" href="#"><div class="col-md-2" style="background-color:black;"><br><br></div></a>
+		
+		
+		<a onmouseover="changecolor('ff0000')" href="#"><div class="col-md-2" style="background-color:red;"><br><br></div></a>
+		
+		
+		<a onmouseover="changecolor('ffff00')" href="#"><div class="col-md-2" style="background-color:yellow;"><br><br></div></a>
+		
+		
+		<a onmouseover="changecolor('009900')" href="#"><div class="col-md-2" style="background-color:green;"><br><br></div></a>
+		
+		
+		<a onmouseover="changecolor('0000ff')" href="#"><div class="col-md-2" style="background-color:blue;"><br><br></div></a>
+	</div>
+</div>
 </body>
 </html>

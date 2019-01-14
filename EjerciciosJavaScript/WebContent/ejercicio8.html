@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio 8</title>
+<script>
+    function tratarTexto() {
+        var array = new Array();
+        var palabras;
+        array = formulario.texto.value.split(" ");
+        palabras = array.length;
+        document.write("Número de palabras : <strong>" + palabras + "</strong>" + "<br>");
+        document.write("Primera palabra : " + array[0].bold() + "<br>");
+        document.write("Última palabra : " + array[palabras - 1].bold() + "<br>");
+        document.write("Colocadas al revés:<br>" + array.reverse().join("...").bold() + "<br>");
+        document.write("Ordenadas de la 'a' a la 'z':<BR>" + array.sort().join("...").bold());
+        document.write("<BR>ordenadas de la 'z' a la 'a':<BR>" + array.sort().reverse().join("...").bold());
+    }
+</script>
+</head>
+<body>
+    <form name="formulario">
+        Introduce un texto:<br>
+        <textarea name="texto" rows=5 cols=30></textarea><br>
+        <input type=button value="Enviar" onClick="tratarTexto()">
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio 7</title>
+<script>
+	var nombre=prompt("Introduzca su nombre.","nombre");
+	var fecha = new Date ();
+	var hora = fecha.getHours();
+	document.writeln("<b><font size=10 face='Comic Sans MS'>");
+	document.writeln("<b>");
+	if (hora <= 12)
+	        document.write("Buenos días "+nombre+'!');
+	else if (hora <= 22)
+	        document.write("Buenas tardes "+nombre+'!');
+	else
+	     document.write("Buenas noches "+nombre+'!'); document.writeln("<br>");
+</script>
+</head>
+<body>
+</body>
+</html>

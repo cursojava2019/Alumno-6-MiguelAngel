@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ejercicio 11</title>
+<script> 
+	function validar(){
+		var numero = document.getElementById('numero').value;
+		if(numero < 1 || numero > 100){
+			alert("Error. Introduce un numero comprendido entre 1 y 100");
+		}else{
+			alert('Su numero es: '+numero);
+		}
+	}
+</script>
+<body>
+	<form>
+		<label>Introduce un numero</label>
+		<input type="number" id="numero">
+	    <input type="button" value="Comprobar" onClick="validar()">
+	</form>
+</body>
+</html>
