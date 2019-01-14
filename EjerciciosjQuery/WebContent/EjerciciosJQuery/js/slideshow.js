@@ -4,9 +4,9 @@ $("#search").before(bSlideShow);
 $("#bSlideShow").click(function(){
 	var divSlide="<div id='slide'></div>";
 	$("#search").after(divSlide);
-	var img1="<img class='fSlide' src='img/naranjas.jpg'>";
-	var img2="<img class='fSlide' src='img/pan.jpg'>";
-	var img3="<img class='fSlide' src='img/zanahorias.jpg'>";
+	var img1="<img class='fSlide' src='images/bread.jpg'>";
+	var img2="<img class='fSlide' src='images/fruit.jpg'>";
+	var img3="<img class='fSlide' src='images/vegetables.jpg'>";
 	var bSlideMenos=" <button id='bSlideMenos'>&#10094;</button>";
 	var bSlideMas=" <button id='bSlideMas'>&#10095;</button>";
 	 $("#slide").append(img1,img2,img3);
