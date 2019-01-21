@@ -1,0 +1,1 @@
+Cuenta [id=123456789, comision=0.6, cliente=Cliente [dni=53596606m, nombre=miguel, apellidos=victor, direccion=605079002, telefono=calle arrieros], tipocuenta=credito, saldo=200.0]
