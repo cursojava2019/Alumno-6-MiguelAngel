@@ -2,36 +2,34 @@ package es.indra.model;
 
 import java.io.Serializable;
 
-public class Cuenta implements Serializable{
-	
+public class Cuenta implements Serializable {
 	public static Float COMISION_DEFECTO =  (float) 0.6;
 	public static String CUENTA_CORRIENTE="CC";
 	public static String CUENTA_VIVIENDA="CV";
 	public static String FONDO_INVERSION="FI";
+	protected String id;
+	protected Float comision;
+	protected Cliente cliente;
+	protected String tipocuenta;
+	protected Float saldo;
 	
-	private String id;
-	private Float comision;
-	private Cliente cliente;
-	private String tipocuenta;
-	private Float saldo;
-
 	public Cuenta(String id, Cliente cliente,  String tipocuenta, Float saldo) {
 		super();
 		this.id=id;
 		this.cliente=cliente;
 		this.comision = COMISION_DEFECTO;
 		this.tipocuenta = tipocuenta;
-		this.saldo=(float) 0;
+		this.saldo=saldo;
 	}
 
 	public Cuenta() {
 		super();
-	}
+	}	
 	
 	public Float getComision() {
 		return comision;
 	}
-	
+
 	public String getTipocuenta() {
 		return tipocuenta;
 	}
@@ -40,7 +38,6 @@ public class Cuenta implements Serializable{
 		this.comision = comision;
 	}
 
-
 	public void setTipocuenta(String tipocuenta) {
 		this.tipocuenta = tipocuenta;
 	}
@@ -48,7 +45,7 @@ public class Cuenta implements Serializable{
 	public Float getSaldo() {
 		return saldo;
 	}
-	
+
 	public void setSaldo(Float saldo) {
 		this.saldo=saldo;
 	}
@@ -60,7 +57,7 @@ public class Cuenta implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	public Cliente getCliente() {
 		return this.cliente;
 	}
@@ -68,15 +65,7 @@ public class Cuenta implements Serializable{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	
    
-	@Override
-	public String toString() {
-		return "Cuenta [id=" + id + ", comision=" + comision + ", cliente=" + cliente + ", tipocuenta=" + tipocuenta
-				+ ", saldo=" + saldo + "]";
-	}
-
 	public Float interes(String tipocuenta) {
 		Float aux = (float) 0;
 		if (tipocuenta.equalsIgnoreCase("CC")) {
@@ -93,8 +82,14 @@ public class Cuenta implements Serializable{
 	
 	public void revisionMensual() {
 		Float s = (float) 0;
-		s = getSaldo()* this.interes(this.tipocuenta) - this.comision;
+		s = getSaldo()+ this.interes(this.tipocuenta) - this.comision;
 		setSaldo(s);
 		System.out.println("Revision mensual realizada");
+	}
+
+	@Override
+	public String toString() {
+		return "Cuenta [id=" + id + ", comision=" + comision + ", cliente=" + cliente.getDni() + ", tipocuenta=" + tipocuenta
+				+ ", saldo=" + saldo + "]";
 	}
 }

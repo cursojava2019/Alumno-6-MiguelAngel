@@ -59,8 +59,6 @@ public class ProgramaBanco {
 	}
 
 	public static void main(String[] args) {
-		
-		
 		try {
 			init();
 		} catch (ClassNotFoundException | IOException e1) {

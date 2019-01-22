@@ -29,8 +29,6 @@ public class Banco implements Serializable {
 		this.cuenta = cuenta;
 	}
 	
-	
-
 	@Override
 	public String toString() {
 		return "Banco [cliente=" + cliente + ", cuenta=" + cuenta + "]";

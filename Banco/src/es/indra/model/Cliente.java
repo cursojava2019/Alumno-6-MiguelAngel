@@ -2,7 +2,7 @@ package es.indra.model;
 
 import java.io.Serializable;
 
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
 	private String dni;
 	private String nombre;
 	private String apellidos;
