@@ -1,5 +1,14 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="es.indra.academia.model.entities.Alumno"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%
+	List<Alumno> listado=(List<Alumno>)request.getAttribute("listado");
+	if (listado==null){
+		listado=new ArrayList<Alumno>();
+	}
+%> 
 <!DOCTYPE html>
 <html>
 <%@include file="../plantilla/head.jsp" %>
@@ -19,7 +28,40 @@
             <!-- /.Incluir mi codigo -->
             <div class="row">
             <div class="col-lg-12">
-            	<h3>Bienvenido a la gestión de la academia, elija una opción del menú</h3>
+            	<div class="panel panel-default">
+                    <div class="panel-heading">
+                        Listado de Alumnos
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                       <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>DNI</th>
+                                    <th>Telefono</th>
+                                    <th>Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <% for(int i=0; i<listado.size();i++) {
+                            	Alumno alumno=listado.get(i);	
+                            %>
+                                <tr class="odd gradeX">
+                                    <td><%=alumno.getNombre()%></td>
+                                    <td><%=alumno.getApellido()%> <%=alumno.getApellido2()%></td>
+                                    <td><%=alumno.getNif()%></td>
+                                    <td ><%=alumno.getTelefono()%></td>
+                                    <td ><a href="<%=alumno.getId()%>">Modificar</a> <a href="<%=alumno.getId()%>">Eliminar</a></td>
+                                </tr>
+                            <% } %>   
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <!-- /.panel-body -->
+            	</div>
             </div>
             
             

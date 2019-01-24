@@ -1,11 +1,10 @@
-package es.academia.configuracion;
+package es.indra.academia.configuracion;
 
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
-
-import es.indra.model.support.DatosConexion;
 
 public class Configuracion {
 	
@@ -25,23 +24,24 @@ public class Configuracion {
 		}
 	}
 	
-	public Configuracion getInstace() {
+	public Configuracion getInstance() {
 		if (singleton == null) {
 			singleton = new Configuracion();
 		}
 		return singleton;
 	}
 	
-	public Connection obtenerConexionBD() throws SQLException{
+	public Connection obtenerConexionBD() throws SQLException, ClassNotFoundException {
 		String url = this.parametros.getProperty("bbdd.url");
 		String usuario = this.parametros.getProperty("bbdd.usuario");
 		String password = this.parametros.getProperty("bbdd.password");
+		Class.forName("org.postgresql.Driver");
 		Connection co = DriverManager.getConnection(url, usuario, password);
 		
 		return co;
 	}
 	
 	public String obtenerParametros(String parametro) {
-		return this.
+		return this.parametros.getProperty(parametro);
 	}
 }
