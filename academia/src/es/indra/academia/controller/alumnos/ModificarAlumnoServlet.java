@@ -1,4 +1,4 @@
-package es.academia.controller.alumnos;
+package es.indra.academia.controller.alumnos;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EliminarAlumnoServlet
+ * Servlet implementation class ModificarAlumnoServlet
  */
-@WebServlet("/admin/alumnos/eliminar.html")
-public class EliminarAlumnoServlet extends HttpServlet {
+@WebServlet("/admin/alumnos/modificar.html")
+public class ModificarAlumnoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarAlumnoServlet() {
+    public ModificarAlumnoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

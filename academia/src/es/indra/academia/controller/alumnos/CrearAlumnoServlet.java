@@ -1,4 +1,4 @@
-package es.academia.controller.alumnos;
+package es.indra.academia.controller.alumnos;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
