@@ -1,11 +1,17 @@
 package es.indra.academia.controller.alumnos;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import es.indra.academia.model.service.AlumnoService;
 
 /**
  * Servlet implementation class CrearAlumnoServlet
@@ -26,16 +32,55 @@ public class CrearAlumnoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/alumnos/nuevo.jsp");
+		dispacher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		ArrayList<String> errores = new ArrayList<String>();
+
+		String nif = request.getParameter("nif");
+		String nombre = request.getParameter("nombre");
+		String apellido = request.getParameter("apellido1");
+		String apellido2 = request.getParameter("apellido2");
+		String telefono = request.getParameter("telefono");
+		String correo = request.getParameter("email");
+		String repetidor = request.getParameter("repetidor");
+		String observaciones = request.getParameter("observaciones");
+
+		AlumnoForm alumno = new AlumnoForm();
+		alumno.setCorreo(correo);
+		alumno.setApellido2(apellido2);
+		alumno.setApellido(apellido);
+		alumno.setNif(nif);
+		alumno.setNombre(nombre);
+		alumno.setTelefono(telefono);
+		alumno.setObservaciones(observaciones);
+
+		if (repetidor != null && !repetidor.equals("")) {
+			Boolean repetidorB = Boolean.parseBoolean(repetidor);
+			alumno.setRepetidor(repetidorB);
+		} else {
+			alumno.setRepetidor(false);
+		}
+		alumno.setObservaciones(observaciones);
+		alumno.setFechaAlta(new Date());
+		alumno.validar(errores);
+		if (errores.size() > 0) {
+			request.setAttribute("formulario", alumno);
+			request.setAttribute("errores", errores);
+
+			RequestDispatcher dispacher = request.getRequestDispatcher("/WEB-INF/jsp/alumnos/nuevo.jsp");
+			dispacher.forward(request, response);
+		} else {
+			AlumnoService alumnoService = AlumnoService.getInstance();
+			alumnoService.create(alumno);
+
+			response.sendRedirect("./listado.html?mensaje=correcto");
+		}
 	}
 
 }

@@ -24,24 +24,27 @@ public class Configuracion {
 		}
 	}
 	
-	public Configuracion getInstance() {
+	public static Configuracion getInstance() {
 		if (singleton == null) {
 			singleton = new Configuracion();
 		}
 		return singleton;
 	}
 	
-	public Connection obtenerConexionBD() throws SQLException, ClassNotFoundException {
+	public Connection obtenerConexionBD() throws SQLException {
 		String url = this.parametros.getProperty("bbdd.url");
 		String usuario = this.parametros.getProperty("bbdd.usuario");
-		String password = this.parametros.getProperty("bbdd.password");
-		Class.forName("org.postgresql.Driver");
-		Connection co = DriverManager.getConnection(url, usuario, password);
-		
+		String pass = this.parametros.getProperty("bbdd.password");
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		Connection co = DriverManager.getConnection(url, usuario, pass);
 		return co;
 	}
 	
-	public String obtenerParametros(String parametro) {
+	public String obtenerParametro(String parametro) {
 		return this.parametros.getProperty(parametro);
 	}
 }
