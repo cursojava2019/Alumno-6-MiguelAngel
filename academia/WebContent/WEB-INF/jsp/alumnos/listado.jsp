@@ -5,7 +5,7 @@
     pageEncoding="ISO-8859-1"%>
 <%
 	List<Alumno> listado=(List<Alumno>)request.getAttribute("listado");
-	if (listado==null){
+	if (listado==null) {
 		listado=new ArrayList<Alumno>();
 	}
 	String patronBusqueda= request.getParameter("patron");
@@ -120,7 +120,6 @@
     
     
    
-    </script>
     </script>
 	
 </body>
