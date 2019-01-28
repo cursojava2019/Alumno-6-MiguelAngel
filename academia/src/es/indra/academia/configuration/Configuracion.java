@@ -1,4 +1,4 @@
-package es.indra.academia.configuracion;
+package es.indra.academia.configuration;
 
 import java.io.InputStream;
 import java.sql.Connection;

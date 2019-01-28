@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import es.indra.academia.configuracion.Configuracion;
+import es.indra.academia.configuration.Configuracion;
 import es.indra.academia.model.entities.Alumno;
 import es.indra.academia.model.support.Dao;
 import es.indra.academia.model.support.DaoException;
