@@ -1,5 +1,6 @@
+<%@page import="es.indra.academia.model.entities.Profesor"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="es.indra.academia.controller.alumnos.AlumnoForm"%>
+<%@page import="es.indra.academia.controller.profesores.ProfesorForm"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -7,24 +8,26 @@
 
 <%
 List<String> errores= (List<String>)request.getAttribute("errores");
-AlumnoForm formulario= (AlumnoForm)request.getAttribute("formulario");
+ProfesorForm formulario= (ProfesorForm)request.getAttribute("formulario");
 if (errores==null){
 	errores=new ArrayList<String>();
 }
 if (formulario==null){
-	formulario=new AlumnoForm();
+	formulario=new ProfesorForm();
 }
 %>
 <html>
 <%@include file="../plantilla/head.jsp" %>
 <body>
+
     <div id="wrapper">
+
         <!-- Navigation -->
         <%@include file="../plantilla/cabecera.jsp" %>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Nuevo Alumno</h1>
+                    <h1 class="page-header">Modificar Profesor</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -33,9 +36,10 @@ if (formulario==null){
             <div class="col-lg-12">
               <div class="panel panel-default">
                         <div class="panel-heading">
-                            Formulario de Alta
+                            Formulario de Modificacion
                         </div>
                         <div class="panel-body">
+                        
                             <div class="row">
                                 <div class="col-lg-6">
                                 <%if (errores.size()>0) {%>
@@ -44,8 +48,10 @@ if (formulario==null){
                                			<p><%=errores.get(i)%></p>
                                		<%} %>
                            			 </div>
+                           			 
                            			 <%} %>
-                                    <form role="form" action="./nuevo.html" method="post">
+                                    <form role="form" action="./modificar.html" method="post">
+                                       <input type="hidden" value="<%=formulario.getId()%>" name="id"/>
                                         <div class="form-group">
                                             <label>NIF</label>
                                             <input name="nif" class="form-control" value="<%=formulario.getNif()%>">
@@ -77,33 +83,36 @@ if (formulario==null){
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="repetidor" type="checkbox" value="" checked="<%=formulario.getRepetidor()%>"/>Repetidor
-                                                </label>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Observaciones</label>
-                                            <textarea class="form-control" name="observaciones" rows="3"><%=formulario.getObservaciones()%></textarea>
+                                            <label>Titulación</label>
+                                            <input name="titulacion" class="form-control" type="text" value="<%=formulario.getTitulacion()%>">
+                                            <p class="help-block"></p>
                                         </div>
                                         <button type="submit" class="btn btn-default">Enviar</button>
                                         <button type="reset" class="btn btn-default">Limpiar</button>
                                     </form>
                                 </div>
+                               
                             </div>
                             <!-- /.row (nested) -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
+            
             </div>
+            
+            
             </div>
+            
+            
+            
         </div>
         <!-- /#page-wrapper -->
+
     </div>
     <!-- /#wrapper -->
+
    <%@include file="../plantilla/javascriptPie.jsp" %>
+
 </body>
 </html>

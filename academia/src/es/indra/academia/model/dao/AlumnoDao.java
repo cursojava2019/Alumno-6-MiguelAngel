@@ -27,7 +27,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
-			p.setString(3, entity.getApellido());
+			p.setString(3, entity.getApellido1());
 			p.setString(4, entity.getApellido2());
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
@@ -58,20 +58,28 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co.prepareStatement("UPDATE ALUMNO" + "SET dni=?," + "nombre=?," + "apellido1=?,"
+			PreparedStatement p = co.prepareStatement("UPDATE ALUMNO " + "SET nif=?," + "nombre=?," + "apellido1=?,"
 					+ "apellido2=?," + "telefono=?," + "correo=?," + "repetidor=?," + "fechaalta=?," + "fechabaja=?,"
 					+ "observaciones=?  WHERE id=?;");
 
 			p.setLong(11, entity.getId());
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
-			p.setString(3, entity.getApellido());
+			p.setString(3, entity.getApellido1());
 			p.setString(4, entity.getApellido2());
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
 			p.setBoolean(7, entity.getRepetidor());
-			p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
-			p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
+			if (entity.getFechaAlta() != null) {
+				p.setDate(8, new java.sql.Date(entity.getFechaAlta().getTime()));
+			} else {
+				p.setDate(8, null);
+			}
+			if (entity.getFechaBaja() != null) {
+				p.setDate(9, new java.sql.Date(entity.getFechaBaja().getTime()));
+			} else {
+				p.setDate(9, null);
+			}
 			p.setString(10, entity.getObservaciones());
 			p.executeUpdate();
 			co.close();
@@ -80,7 +88,6 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			e.printStackTrace();
 			throw new DaoException();
 		}
-
 	}
 
 	@Override
@@ -155,7 +162,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 		Long id = resultado.getLong(1);
 		String nif = resultado.getString(2);
 		String nombre = resultado.getString(3);
-		String apellido = resultado.getString(4);
+		String apellido1 = resultado.getString(4);
 		String apellido2 = resultado.getString(5);
 		String telefono = resultado.getString(6);
 		String correo = resultado.getString(7);
@@ -168,7 +175,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 		alumno.setId(id);
 		alumno.setNif(nif);
 		alumno.setNombre(nombre);
-		alumno.setApellido(apellido);
+		alumno.setApellido1(apellido1);
 		alumno.setApellido2(apellido2);
 		alumno.setTelefono(telefono);
 		alumno.setCorreo(correo);
@@ -187,7 +194,7 @@ public class AlumnoDao implements Dao<Long, Alumno> {
 			Statement instruccion = co.createStatement();
 
 			String query = "SELECT id," + CAMPOS + " FROM ALUMNO WHERE LOWER(nif) like LOWER('%" + patron
-					+ "%') OR LOWER(nombre) like LOWER('%" + patron + "%') OR LOWER(apellido) like LOWER('%" + patron
+					+ "%') OR LOWER(nombre) like LOWER('%" + patron + "%') OR LOWER(apellido1) like LOWER('%" + patron
 					+ "%')  OR LOWER(apellido2) like LOWER('%" + patron + "%') ;";
 			ResultSet resultados = instruccion.executeQuery(query);
 

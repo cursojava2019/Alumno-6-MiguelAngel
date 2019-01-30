@@ -10,7 +10,7 @@ public class ProfesorForm extends Profesor {
 		super();
 		setNif("");
 		setNombre("");
-		setApellido("");
+		setApellido1("");
 		setApellido2("");
 		setTelefono("");
 		setCorreo("");
@@ -30,7 +30,7 @@ public class ProfesorForm extends Profesor {
 			errores.add("El Nombre es obligatorio");
 
 		}
-		if (getApellido() == null || getApellido().equals("")) {
+		if (getApellido1() == null || getApellido1().equals("")) {
 			errores.add("El Primero Apellido es obligatorio");
 
 		}

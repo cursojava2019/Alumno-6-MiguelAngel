@@ -43,7 +43,7 @@ public class CrearProfesorServlet extends HttpServlet {
 
 		String nif = request.getParameter("nif");
 		String nombre = request.getParameter("nombre");
-		String apellido = request.getParameter("apellido1");
+		String apellido1 = request.getParameter("apellido1");
 		String apellido2 = request.getParameter("apellido2");
 		String telefono = request.getParameter("telefono");
 		String correo = request.getParameter("email");
@@ -52,7 +52,7 @@ public class CrearProfesorServlet extends HttpServlet {
 		ProfesorForm profesor = new ProfesorForm();
 		profesor.setCorreo(correo);
 		profesor.setApellido2(apellido2);
-		profesor.setApellido(apellido);
+		profesor.setApellido1(apellido1);
 		profesor.setNif(nif);
 		profesor.setNombre(nombre);
 		profesor.setTelefono(telefono);

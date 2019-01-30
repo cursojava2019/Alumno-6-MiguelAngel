@@ -62,7 +62,7 @@ if (formulario==null){
                                         </div>
                                         <div class="form-group">
                                             <label>Primer Apellido </label>
-                                            <input name="apellido1" class="form-control" value="<%=formulario.getApellido()%>">
+                                            <input name="apellido1" class="form-control" value="<%=formulario.getApellido1()%>">
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">

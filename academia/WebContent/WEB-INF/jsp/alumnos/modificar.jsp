@@ -1,3 +1,4 @@
+<%@page import="es.indra.academia.model.entities.Alumno"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="es.indra.academia.controller.alumnos.AlumnoForm"%>
 <%@page import="java.util.List"%>
@@ -18,13 +19,15 @@ if (formulario==null){
 <html>
 <%@include file="../plantilla/head.jsp" %>
 <body>
+
     <div id="wrapper">
+
         <!-- Navigation -->
         <%@include file="../plantilla/cabecera.jsp" %>
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Nuevo Alumno</h1>
+                    <h1 class="page-header">Modificar Alumno</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -33,9 +36,10 @@ if (formulario==null){
             <div class="col-lg-12">
               <div class="panel panel-default">
                         <div class="panel-heading">
-                            Formulario de Alta
+                            Formulario de Modificacion
                         </div>
                         <div class="panel-body">
+                        
                             <div class="row">
                                 <div class="col-lg-6">
                                 <%if (errores.size()>0) {%>
@@ -44,8 +48,10 @@ if (formulario==null){
                                			<p><%=errores.get(i)%></p>
                                		<%} %>
                            			 </div>
+                           			 
                            			 <%} %>
-                                    <form role="form" action="./nuevo.html" method="post">
+                                    <form role="form" action="./modificar.html" method="post">
+                                       <input type="hidden" value="<%=formulario.getId()%>" name="id"/>
                                         <div class="form-group">
                                             <label>NIF</label>
                                             <input name="nif" class="form-control" value="<%=formulario.getNif()%>">
@@ -88,22 +94,34 @@ if (formulario==null){
                                             <label>Observaciones</label>
                                             <textarea class="form-control" name="observaciones" rows="3"><%=formulario.getObservaciones()%></textarea>
                                         </div>
+                                      		<input type="hidden" name="fechaAlta" value="<%=formulario.getFechaAltaString()%>"/>
+                                      		<input type="hidden" name="fechaBaja" value="<%=formulario.getFechaBajaString()%>"/>
                                         <button type="submit" class="btn btn-default">Enviar</button>
                                         <button type="reset" class="btn btn-default">Limpiar</button>
                                     </form>
                                 </div>
+                               
                             </div>
                             <!-- /.row (nested) -->
                         </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
+            
             </div>
+            
+            
             </div>
+            
+            
+            
         </div>
         <!-- /#page-wrapper -->
+
     </div>
     <!-- /#wrapper -->
+
    <%@include file="../plantilla/javascriptPie.jsp" %>
+
 </body>
 </html>

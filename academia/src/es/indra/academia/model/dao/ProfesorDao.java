@@ -26,7 +26,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
-			p.setString(3, entity.getApellido());
+			p.setString(3, entity.getApellido1());
 			p.setString(4, entity.getApellido2());
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
@@ -46,13 +46,13 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
-			PreparedStatement p = co.prepareStatement("UPDATE PROFESOR" + "SET dni=?," + "nombre=?," + "apellido1=?,"
+			PreparedStatement p = co.prepareStatement("UPDATE PROFESOR " + "SET nif=?," + "nombre=?," + "apellido1=?,"
 					+ "apellido2=?," + "telefono=?," + "correo=?," + "titulacion=?");
 
 			p.setLong(8, entity.getId());
 			p.setString(1, entity.getNif());
 			p.setString(2, entity.getNombre());
-			p.setString(3, entity.getApellido());
+			p.setString(3, entity.getApellido1());
 			p.setString(4, entity.getApellido2());
 			p.setString(5, entity.getTelefono());
 			p.setString(6, entity.getCorreo());
@@ -139,7 +139,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 		Long id = resultado.getLong(1);
 		String nif = resultado.getString(2);
 		String nombre = resultado.getString(3);
-		String apellido = resultado.getString(4);
+		String apellido1 = resultado.getString(4);
 		String apellido2 = resultado.getString(5);
 		String telefono = resultado.getString(6);
 		String correo = resultado.getString(7);
@@ -149,7 +149,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 		profesor.setId(id);
 		profesor.setNif(nif);
 		profesor.setNombre(nombre);
-		profesor.setApellido(apellido);
+		profesor.setApellido1(apellido1);
 		profesor.setApellido2(apellido2);
 		profesor.setTelefono(telefono);
 		profesor.setCorreo(correo);
@@ -165,7 +165,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 			Statement instruccion = co.createStatement();
 
 			String query = "SELECT id," + CAMPOS + " FROM PROFESOR WHERE LOWER(nif) like LOWER('%" + patron
-					+ "%') OR LOWER(nombre) like LOWER('%" + patron + "%') OR LOWER(apellido) like LOWER('%" + patron
+					+ "%') OR LOWER(nombre) like LOWER('%" + patron + "%') OR LOWER(apellido1) like LOWER('%" + patron
 					+ "%')  OR LOWER(apellido2) like LOWER('%" + patron + "%') ;";
 			ResultSet resultados = instruccion.executeQuery(query);
 

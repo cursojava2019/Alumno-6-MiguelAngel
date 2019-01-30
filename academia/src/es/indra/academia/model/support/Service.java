@@ -16,7 +16,7 @@ public abstract class Service<K, O> {
 
 	public void update(O entity) {
 		try {
-			getDao().create(entity);
+			getDao().update(entity);
 		} catch (DaoException e) {
 			System.out.println("Error al modificar en base de datos " + entity.getClass().getName());
 		}
@@ -42,7 +42,6 @@ public abstract class Service<K, O> {
 
 	public List<O> findAll() {
 		try {
-
 			return getDao().findAll();
 		} catch (DaoException e) {
 			System.out.println("Error Al realizar la busqueda ");

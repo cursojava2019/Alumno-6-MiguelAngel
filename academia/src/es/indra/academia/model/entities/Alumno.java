@@ -5,7 +5,7 @@ import java.util.Date;
 public class Alumno {
 	private Long id;
 	private String nombre;
-	private String apellido;
+	private String apellido1;
 	private String apellido2;
 	private String nif;
 	private String telefono;
@@ -31,12 +31,12 @@ public class Alumno {
 		this.nombre = nombre;
 	}
 	
-	public String getApellido() {
-		return apellido;
+	public String getApellido1() {
+		return apellido1;
 	}
 	
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setApellido1(String apellido1) {
+		this.apellido1 = apellido1;
 	}
 	
 	public String getApellido2() {
@@ -105,7 +105,7 @@ public class Alumno {
 	
 	@Override
 	public String toString() {
-		return "Alumno [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", apellido2=" + apellido2
+		return "Alumno [id=" + id + ", nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2
 				+ ", nif=" + nif + ", telefono=" + telefono + ", correo=" + correo + ", repetidor=" + repetidor
 				+ ", fechaAlta=" + fechaAlta + ", fechaBaja=" + fechaBaja + ", observaciones=" + observaciones + "]";
 	}

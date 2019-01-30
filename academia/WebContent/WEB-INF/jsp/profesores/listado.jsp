@@ -10,13 +10,31 @@
 	}
 	String patronBusqueda= request.getParameter("patron");
   if (patronBusqueda==null) patronBusqueda="";  
+  
+  String mensaje= request.getParameter("mensaje");
+  Boolean mensajeOK=false;
+  Boolean mensajeError=false;
+  if (mensaje!=null) {
+  		if (mensaje.equalsIgnoreCase("correcto")) {
+  			mensajeOK=true;
+  		}
+  		if (mensaje.equalsIgnoreCase("errorId")) {
+  			mensajeError=true;
+  		}
+  }
 %>    
     
 <!DOCTYPE html>
 <html>
 <%@include file="../plantilla/head.jsp" %>
 <body>
-
+	<script>
+	function confirmarEliminacion(id){
+		if (confirm("¿Está seguro que desea eliminar este profesor?")){
+			location.href='<%=request.getContextPath()%>/admin/profesores/eliminar.html?id='+id;
+		}
+	}
+	</script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -42,26 +60,24 @@
                         </div>
                         
                         <form name="buscador" action="./listado.html" method="post">
-                        <div class="">
-                        <div class="col-6">
-                        <label>Buscar Profesor</label>
-                        </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
-                                                </button></div>
-                        <div class="col-6">
-                                            <input class="" name="patron" type="text" value="<%=patronBusqueda%>">
-                                            <span class="">
-                                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>
-                                                </button>
-                                            </span>
-                                            <%if (!patronBusqueda.equals("")) { %>
-                                            <span>Busqueda filtrada por <strong><%=patronBusqueda %> </strong></span>
-                                            
-                                            <%} %>
-                                            </div>
-                                        </div>
-                                        
-                                        
+	                        <div class="">
+	                        <div class="col-6">
+	                        <label>Buscar Profesor</label>
+	                        </div>
+	                        <div style="float:right;">  <button style="margin-right: 10px;" class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Profesor</i>
+	                                                </button></div>
+	                        <div class="col-6">
+	                            <input class="" name="patron" type="text" value="<%=patronBusqueda%>">
+	                            <span class="">
+	                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>
+	                                </button>
+	                            </span>
+	                            <%if (!patronBusqueda.equals("")) { %>
+	                            <span>Busqueda filtrada por <strong><%=patronBusqueda %> </strong></span>
+	                            
+	                            <%} %>
+	                            </div>
+	                        </div>       
                         </form>
                         
                         <!-- /.panel-heading -->
@@ -82,10 +98,10 @@
                                 %>
                                     <tr class="odd gradeX">
                                         <td><%=profesor.getNombre()%></td>
-                                        <td><%=profesor.getApellido()%> <%=profesor.getApellido2()%></td>
+                                        <td><%=profesor.getApellido1()%> <%=profesor.getApellido2()%></td>
                                         <td><%=profesor.getNif()%></td>
                                         <td ><%=profesor.getTelefono()%></td>
-                                        <td ><a href="<%=profesor.getId()%>">Modificar</a> <a href="<%=profesor.getId()%>">Eliminar</a></td>
+                                        <td ><a href="<%=request.getContextPath()%>/admin/profesores/modificar.html?id=<%=profesor.getId()%>">Modificar</a> <a href="#" onclick="confirmarEliminacion(<%=profesor.getId()%>)">Eliminar</a></td>
                                     </tr>
                                 <% } %>   
                                 </tbody>
