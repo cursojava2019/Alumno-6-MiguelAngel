@@ -47,7 +47,7 @@ public class ProfesorDao implements Dao<Long, Profesor> {
 		try {
 			Connection co = Configuracion.getInstance().obtenerConexionBD();
 			PreparedStatement p = co.prepareStatement("UPDATE PROFESOR " + "SET nif=?," + "nombre=?," + "apellido1=?,"
-					+ "apellido2=?," + "telefono=?," + "correo=?," + "titulacion=?");
+					+ "apellido2=?," + "telefono=?," + "correo=?," + "titulacion=? WHERE id=?;");
 
 			p.setLong(8, entity.getId());
 			p.setString(1, entity.getNif());
