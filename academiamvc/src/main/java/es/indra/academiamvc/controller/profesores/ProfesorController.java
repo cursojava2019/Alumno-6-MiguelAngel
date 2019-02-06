@@ -34,7 +34,7 @@ public class ProfesorController {
 		this.log.info("listado Profesores");
 		List<Profesor> listado = this.profesorService.findAll();
 		model.addAttribute("listado", listado);
-		return "alumnos/listado";
+		return "profesores/listado";
 	}
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.GET)
@@ -80,20 +80,17 @@ public class ProfesorController {
 	}
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@ModelAttribute("formulario") ProfesorForm profesor, Model model) {
+	public String modificarPost(@ModelAttribute("formulario") ProfesorForm profesor, BindingResult result) {
 		ArrayList<String> errores = new ArrayList<String>();
-
-		// alumno.validar(errores);
-		if (errores.size() > 0) {
-
-			model.addAttribute("errores", errores);
-
+		this.validador.validate(profesor, result);
+		if (result.hasErrors()) {
 			return "profesores/modificar";
+
 		} else {
 
 			this.profesorService.update(profesor.obtenerProfesor());
-
 			return "redirect:/admin/profesores/listado.html?mensaje=correcto";
+
 		}
 
 	}

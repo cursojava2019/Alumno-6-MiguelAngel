@@ -3,20 +3,31 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%
-	List<Profesor> listado=(List<Profesor>)request.getAttribute("listado");
-	if (listado==null) {
-		listado=new ArrayList<Profesor>();
-	}
-	String patronBusqueda= request.getParameter("patron");
-  if (patronBusqueda==null) patronBusqueda="";  
-%>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${param.mensaje eq 'correcto'}">
+ <c:set var="mensajeOK" value="true" ></c:set>
+</c:if>
+
+<c:if test="${param.mensaje=='errorId'}">
+ <c:set var="mensajeError" value="true" ></c:set>
+</c:if>   
     
 <!DOCTYPE html>
 <html>
-<%@include file="../plantilla/head.jsp" %>
+<c:import url="../plantilla/head.jsp"></c:import>
 <body>
 
+<c:out  value=""></c:out>
+	<script>
+	function confirmarEliminacion(id){
+		if (confirm("¿Está seguro que desea eliminar este profesor?")){
+			location.href='${pageContext.servletContext.contextPath}/admin/profesores/eliminar.html?id='+id;
+		}
+		
+		
+	}
+	</script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -32,11 +43,16 @@
             <div class="row">
             <div class="col-lg-12">
             	<div class="panel panel-default">
-                        <%if (request.getParameter("mensaje")!=null){ %>
+                   <c:if test="${mensajeOK}">
                         <div class="alert alert-success" id="mensaje">
-                               Operación realizada correctamente
-                            </div>
-                            <%} %>
+                          Operación realizada correctamente
+                       </div>
+                   </c:if>
+                   <c:if test="${mensajeError}">
+                   <div class="alert alert-danger" id="mensaje">
+                          Id no encontrado. No es posible realizar la operación.
+                   </div>
+                   </c:if>
                         <div class="panel-heading">
                             Listado de Profesores
                         </div>
@@ -49,15 +65,14 @@
 	                        <div style="float:right;">  <button style="margin-right: 10px;" class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/profesores/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Profesor</i>
 	                                                </button></div>
 	                        <div class="col-6">
-	                            <input class="" name="patron" type="text" value="<%=patronBusqueda%>">
+	                            <input class="" name="patron" type="text" value="${param.patron}">
 	                            <span class="">
 	                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i>
 	                                </button>
 	                            </span>
-	                            <%if (!patronBusqueda.equals("")) { %>
-	                            <span>Busqueda filtrada por <strong><%=patronBusqueda %> </strong></span>
-	                            
-	                            <%} %>
+	                            <c:if test="${not empty param.patron}">
+	                            <span>Busqueda filtrada por <strong>${param.patron} </strong></span>
+	                            </c:if>
 	                            </div>
 	                        </div>       
                         </form>
@@ -75,17 +90,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <% for(int i=0; i<listado.size();i++) {
-                                	Profesor profesor=listado.get(i);	
-                                %>
+                                <c:forEach var="profesor" items="${listado}"> 
+                               
                                     <tr class="odd gradeX">
-                                        <td><%=profesor.getNombre()%></td>
-                                        <td><%=profesor.getApellido1()%> <%=profesor.getApellido2()%></td>
-                                        <td><%=profesor.getNif()%></td>
-                                        <td ><%=profesor.getTelefono()%></td>
-                                        <td ><a href="<%=profesor.getId()%>">Modificar</a> <a href="<%=profesor.getId()%>">Eliminar</a></td>
+                                        <td>${profesor.nombre}</td>
+                                        <td>${profesor.apellido1} ${profesor.apellido2}</td>
+                                        <td>${profesor.nif}</td>
+                                        <td>${profesor.telefono}</td>
+                                        <td ><a href="${ruta}/admin/profesores/modificar.html?id=${profesor.id}">Modificar</a> <a href="#" onclick="confirmarEliminacion(${profesor.id})">Eliminar</a></td>
                                     </tr>
-                                <% } %>   
+                              	</c:forEach>    
                                 </tbody>
                             </table>
                             

@@ -39,7 +39,7 @@
                                     	<form:hidden path="id" />
                                        	<spring:hasBindErrors name="*"> HAY ERRORRES QUE RESOLVER</spring:hasBindErrors>
                                         <div class="form-group">
-                                            <label>NIF</label>
+                                           <label>NIF</label>
                                            <form:input path="nif" class="form-control"/>
                                            <form:errors path="nif" element="div" cssClass="alert alert-danger"/>
                                             <p class="help-block"></p>
@@ -78,6 +78,7 @@
                                         <c:set var="chequeado" value="checked">
                                         </c:set> </c:if>
                                         <div class="form-group">
+                                        	<label>Repetidor</label>
                                             <div class="checkbox">
                                                 <label>
                                                     <form:checkbox path="repetidor"/>
@@ -87,7 +88,7 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <label>Observaciones</label>
+                                            <label>Observaciones</label><br/>
                                             <form:textarea path="observaciones" rows="3"/>
                                             <form:errors path="observaciones" element="div" cssClass="alert alert-danger"/>
                                             

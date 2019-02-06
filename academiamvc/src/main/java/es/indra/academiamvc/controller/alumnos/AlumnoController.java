@@ -80,20 +80,17 @@ public class AlumnoController {
 	}
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@ModelAttribute("formulario") AlumnoForm alumno, Model model) {
+	public String modificarPost(@ModelAttribute("formulario") AlumnoForm alumno, BindingResult result) {
 		ArrayList<String> errores = new ArrayList<String>();
-
-		// alumno.validar(errores);
-		if (errores.size() > 0) {
-
-			model.addAttribute("errores", errores);
-
+		this.validador.validate(alumno, result);
+		if (result.hasErrors()) {
 			return "alumnos/modificar";
+
 		} else {
 
 			this.alumnoService.update(alumno.obtenerAlumno());
-
 			return "redirect:/admin/alumnos/listado.html?mensaje=correcto";
+
 		}
 
 	}
@@ -115,5 +112,7 @@ public class AlumnoController {
 		}
 
 	}
+	
+	
 
 }

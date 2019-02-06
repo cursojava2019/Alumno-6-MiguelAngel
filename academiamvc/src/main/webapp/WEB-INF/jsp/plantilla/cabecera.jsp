@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%
-	request.setAttribute("ruta",request.getContextPath());
+	session.setAttribute("ruta",request.getContextPath());
 %>
 
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">

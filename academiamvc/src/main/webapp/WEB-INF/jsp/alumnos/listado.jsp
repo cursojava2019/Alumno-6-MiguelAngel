@@ -4,12 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <%
- 
-  String texto="Texto muy guay";
-  session.setAttribute("texto", texto);
- 
- %>
    
     
 <c:if test="${param.mensaje eq 'correcto'}">
@@ -29,7 +23,7 @@
 	<script>
 	function confirmarEliminacion(id){
 		if (confirm("¿Está seguro que desea eliminar este alumno?")){
-			location.href='${ruta}/admin/alumnos/eliminar.html?id='+id;
+			location.href='${pageContext.servletContext.contextPath}/admin/alumnos/eliminar.html?id='+id;
 		}
 		
 		
@@ -71,7 +65,7 @@
                         <div class="col-6">
                         <label>Buscar Alumno</label>
                         </div>
-                        <div style="float:right;">  <button class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Usuario</i>
+                        <div style="float:right;">  <button style="margin-right: 10px;" class="btn btn-default"  onclick="location.href='<%=request.getContextPath()%>/admin/alumnos/nuevo.html';" type="button"><i class="fa fa-user"> Nuevo Alumno</i>
                                                 </button></div>
                         <div class="col-6">
                                             <input class="" name="patron" type="text" value="${param.patron}">
