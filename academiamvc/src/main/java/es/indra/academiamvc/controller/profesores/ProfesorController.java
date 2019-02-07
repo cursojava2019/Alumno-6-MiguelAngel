@@ -36,6 +36,22 @@ public class ProfesorController {
 		model.addAttribute("listado", listado);
 		return "profesores/listado";
 	}
+	
+	@RequestMapping(value = "/listado.html", method = RequestMethod.POST)
+	public String listadoPatron(@RequestParam("patron") String patron, Model model) {
+
+		this.log.info("listado Profesores por patrón");
+		List<Profesor> listado = null;
+
+		if (patron != null || !patron.equals("")) {
+			listado = this.profesorService.findProfesoresPatron(patron);
+		} else {
+			listado = this.profesorService.findAll();
+		}
+
+		model.addAttribute("listado", listado);
+		return "profesores/listado";
+	}
 
 	@RequestMapping(value = "/nuevo.html", method = RequestMethod.GET)
 	public String nuevo(Model model) {
