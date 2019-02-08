@@ -100,7 +100,7 @@ public class ProfesorController {
 	}
 
 	@RequestMapping(value = "/modificar.html", method = RequestMethod.POST)
-	public String modificarPost(@ModelAttribute("formulario") ProfesorForm profesor, BindingResult result) {
+	public String modificarPost(@Valid @ModelAttribute("formulario") ProfesorForm profesor, BindingResult result) {
 		ArrayList<String> errores = new ArrayList<String>();
 		this.validador.validate(profesor, result);
 		if (result.hasErrors()) {

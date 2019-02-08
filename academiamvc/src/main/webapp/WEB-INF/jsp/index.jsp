@@ -1,6 +1,6 @@
 
 <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-12">
         <h1 class="page-header">Login</h1>
         <h3 class="page-header">Acceder Academia</h3>
     </div>
