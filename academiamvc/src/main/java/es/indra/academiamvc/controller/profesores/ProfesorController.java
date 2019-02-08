@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.indra.academiamvc.authentication.MyUserDetails;
 import es.indra.academiamvc.model.entities.Profesor;
 import es.indra.academiamvc.model.service.ProfesorService;
 
@@ -31,6 +33,8 @@ public class ProfesorController {
 
 	@RequestMapping(value = "/listado.html", method = RequestMethod.GET)
 	public String listado(Model model) {
+
+		
 		this.log.info("listado Profesores");
 		List<Profesor> listado = this.profesorService.findAll();
 		model.addAttribute("listado", listado);
