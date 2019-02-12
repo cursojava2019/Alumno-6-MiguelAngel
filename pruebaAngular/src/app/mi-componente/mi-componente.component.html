@@ -3,6 +3,13 @@
 </p>
 <h1>Hola que pasa {{nombre}}</h1>
 
-<button (click) =></button>
-<button (click)></button>
-<button (click)></button>
+<button (dblclick) = "cambiarNombre('Miguel')" >Botón Miguel</button>
+<button (click) = "cambiarNombre('Jose')" >Botón Jose</button>
+<button (click) = "cambiarNombre('Antonio')" >Botón Antonio</button>
+
+<p>
+  <label>Introduce nombre: </label>
+  <input type="text" [(ngModel)]="nombreEntrada">
+</p>
+<button (click) = "cambiarNombreEntrada('')" >Cambiar nombre</button>
+<h2>{{ nombreEntrada }}</h2>

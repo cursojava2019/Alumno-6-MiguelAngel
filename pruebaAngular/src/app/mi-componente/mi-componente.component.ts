@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mi-componente.component.css']
 })
 export class MiComponenteComponent implements OnInit {
+  nombre = 'Paco';
+  nombreEntrada = '';
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  cambiarNombre(nuevoNombre: string) {
+    this.nombre = nuevoNombre;
+  }
+
+  cambiarNombreEntrada() {
+    this.nombreEntrada = this.nombreEntrada;
+  }
 }
