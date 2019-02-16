@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Empleado } from '../model/empleado';
 
 @Component({
   selector: 'app-ejercicio2',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Ejercicio2Component implements OnInit {
 
-  constructor() { }
+  empleado: Empleado;
+
+  constructor() {
+    this.empleado = new Empleado('Pablo', 'Rodriguez', 40, [1700, 1600, 1900]);
+  }
 
   ngOnInit() {
   }

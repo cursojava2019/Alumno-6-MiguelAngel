@@ -1,15 +1,14 @@
-<p>
-  mi-componente works!
-</p>
-<h1>Hola que pasa {{nombre}}</h1>
-
-<button (dblclick) = "cambiarNombre('Miguel')" >Botón Miguel</button>
-<button (click) = "cambiarNombre('Jose')" >Botón Jose</button>
-<button (click) = "cambiarNombre('Antonio')" >Botón Antonio</button>
-
-<p>
-  <label>Introduce nombre: </label>
-  <input type="text" [(ngModel)]="nombreEntrada">
-</p>
-<button (click) = "cambiarNombreEntrada('')" >Cambiar nombre</button>
-<h2>{{ nombreEntrada }}</h2>
+<h1>
+    <p>
+      mi-componente works!
+    </p>
+    </h1>
+    <h3 (onmouseover) = "cambiarNombre('Jose')" >Hola que pasa {{nombre}} !!!</h3>
+    <button  (dblclick)="cambiarNombre('Pepe')" >Boton Jose</button>
+    <button (click) = "cambiarNombre('Juan')">Boton Juan</button>
+    <button (click) = "cambiarNombre('Felipe')" >Boton Felipe</button>
+    <p>
+    <label>Introduce Nombre:</label><input type="text" [(ngModel)]="nombreEntrada" [placeholder]="textoIntroduccion">
+    </p>
+    <button (click)="cambiarNombreEntrada()">CambiarNombre</button>
+    <h2>{{nombreEntrada}}</h2>

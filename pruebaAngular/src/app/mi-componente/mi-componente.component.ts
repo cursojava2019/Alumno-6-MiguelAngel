@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class MiComponenteComponent implements OnInit {
   nombre = 'Paco';
   nombreEntrada = '';
+  textoIntroduccion = 'Introduzca un nombre...';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
