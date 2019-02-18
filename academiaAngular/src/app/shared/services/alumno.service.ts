@@ -1,34 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Alumno } from '../entities/alumno';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnoService {
-  listado: Array<Alumno>;
-  constructor() {
-    this.listado = new Array<Alumno>();
-    this.listado.push (
-      new Alumno(0, 'Miguel', 'Victor', 'Segado', 'miguelangelvictor3@gmail.com', new Date(), null, '53596606M', 'Bien', false, '605079002')
-    );
-    this.listado.push (
-      new Alumno(1, 'Juan', 'Lopez', 'Carmona', 'm123@gmail.com', new Date(), null, '12345678M', 'mal', true, '123456789')
-    );
+  url = 'http://192.168.1.19:8080/academiamvc/services/alumnos/';
+  constructor(private http: HttpClient) {
   }
 
-  findAll() {
-    return this.listado;
+  findAll(): Observable<Alumno[]> {
+    return this.http.get<Alumno[]>(this.url);
   }
 
-  findById(index: number) {
-    return this.listado[index];
+  findById(id: number): Observable<Alumno> {
+    console.log('id FindBy ' + id);
+    return this.http.get<Alumno>(this.url + id);
   }
 
-  create(a: Alumno) {
-    this.listado.push(a);
+  create(a: Alumno): Observable<Alumno> {
+    return this.http.post<Alumno>(this.url, a);
   }
 
-  delete(index: number) {
-    return this.listado[index];
+  modificar(a: Alumno): Observable<any> {
+    console.log(a);
+    return this.http.put(this.url + a.id, a);
+  }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.url + id);
   }
 }

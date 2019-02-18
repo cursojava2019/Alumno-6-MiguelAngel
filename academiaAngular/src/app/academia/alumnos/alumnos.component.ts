@@ -13,8 +13,10 @@ import { Router } from '@angular/router';
 export class AlumnosComponent implements OnInit {
   alumnos: Array<Alumno>;
 
-  constructor(alumnoService: AlumnoService, private router: Router) {
-    this.alumnos = alumnoService.findAll();
+  constructor(private alumnoService: AlumnoService, private router: Router) {
+    alumnoService.findAll().subscribe(data => {
+      this.alumnos = data;
+    });
   }
 
   ngOnInit() {
@@ -25,10 +27,16 @@ export class AlumnosComponent implements OnInit {
   }
 
   modificar(id: number) {
-    this.router.navigate(['alumnos/modificar']);
+    this.router.navigate(['alumnos/modificar', id]);
   }
 
   eliminar(id: number) {
-
+    if (confirm('Está seguro que desea borrar el alumno con id' + id)) {
+      this.alumnoService.delete(id).subscribe(data => {
+        this.alumnoService.findAll().subscribe(data => {
+          this.alumnos = data;
+        });
+      });
+    }
   }
 }

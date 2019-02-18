@@ -1,4 +1,4 @@
-<h4>Introduce Alumno</h4>
+<h4>Introduce Profesor</h4>
 <div class="jumbotron">
   <form [formGroup]="miFormulario" (ngSubmit)="guardarCambios()" novalidate="">
     <fieldset class="form-group">
@@ -42,13 +42,6 @@
           </div>
       </div>
       <div class="form-group">
-        <div class="checkbox">
-          <label for="repetidor">
-            <input type="checkbox" formControlName="repetidor"> Repetidor
-          </label>
-        </div>
-      </div>
-      <div class="form-group">
         <label class="form-control-label" for="correo">Correo Electrónico</label>
         <input class="form-control" type="text" placeholder="Introduzca el Correo Electrónico" formControlName="correo" [ngClass]="{'is-invalid': miFormulario.get('correo').dirty && !miFormulario.get('correo').valid}">
           <div *ngIf="miFormulario.get('correo').dirty && miFormulario.get('correo').errors"  class="alert alert-danger">
@@ -57,12 +50,10 @@
           </div>
       </div>
       <div class="form-group">
-        <label class="form-control-label" for="observaciones">Observaciones</label>
-        <textarea class="form-control" placeholder="Introduzca las observaciones" formControlName="observaciones">
-          <div *ngIf="miFormulario.get('observaciones').dirty && miFormulario.get('observaciones').errors"  class="alert alert-danger">
-            <p *ngIf="miFormulario.get('observaciones').hasError('maxlength')">El segundo apellido es obligatorio</p>
+        <label class="form-control-label" for="titulacion">Titulación</label>
+        <input class="form-control" type="text" placeholder="Introduzca la titulación" formControlName="titulacion" [ngClass]="{'is-invalid': miFormulario.get('titulacion').dirty && !miFormulario.get('titulacion').valid}">
+          <div *ngIf="miFormulario.get('titulacion').dirty && miFormulario.get('titulacion').errors"  class="alert alert-danger">
           </div>
-        </textarea>
       </div>
     </fieldset>
     <button class="btn btn-primary" [disabled]="miFormulario.invalid" type="submit">Enviar</button>

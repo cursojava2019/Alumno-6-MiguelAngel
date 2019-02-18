@@ -1,13 +1,12 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Alumno } from '../../../shared/entities/alumno';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-formulario-alumno',
-  templateUrl: './formulario-alumno.component.html',
-  styleUrls: ['./formulario-alumno.component.scss']
+  selector: 'app-formulario-profesor',
+  templateUrl: './formulario-profesor.component.html',
+  styleUrls: ['./formulario-profesor.component.scss']
 })
-export class FormularioAlumnoComponent implements OnInit {
+export class FormularioProfesorComponent implements OnInit {
 
   miFormulario: FormGroup;
 
@@ -15,10 +14,10 @@ export class FormularioAlumnoComponent implements OnInit {
   modificar = false;
 
   @Input()
-  alumnoModificar: Alumno;
+  profesorModificar: Profesor;
 
   @Output()
-  modificado = new EventEmitter<Alumno>();
+  modificado = new EventEmitter<Profesor>();
 
   constructor(private fb: FormBuilder) {
 
@@ -50,27 +49,22 @@ export class FormularioAlumnoComponent implements OnInit {
         Validators.required,
         Validators.email
       ]),
-      repetidor: this.fb.control('', [
+      titulacion: this.fb.control('', [
       ]),
-      observaciones: this.fb.control('', [
-        Validators.maxLength(1000)
-      ]),
-      fechaAlta: this.fb.control('', [
-      ])
     });
     if (this.modificar === true) {
-      this.miFormulario.setValue(this.alumnoModificar);
+      this.miFormulario.setValue(this.profesorModificar);
     }
   }
 
   guardarCambios() {
     if (this.modificar === false) {
-      const alumnoForm: Alumno = this.miFormulario.value;
-      alumnoForm.fechaAlta = new Date();
-      this.modificado.next(alumnoForm);
+      const profesorForm: Profesor = this.miFormulario.value;
+      profesorForm.fechaAlta = new Date();
+      this.modificado.next(profesorForm);
     } else {
-      const alumnoForm: Alumno = this.miFormulario.value;
-      this.modificado.next(alumnoForm);
+      const profesorForm: Profesor = this.miFormulario.value;
+      this.modificado.next(profesorForm);
     }
   }
 
